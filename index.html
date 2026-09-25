@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SM Online Store - fashion, jerseys, bags and accessories.">
+  <title>SM Online Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#home" aria-label="SM Online Store home">SM <span>ONLINE STORE</span></a>
+    <div class="top-actions">
+      <button class="icon-btn" id="helpBtn" title="Help">?</button>
+      <button class="icon-btn" id="accountBtn" title="Sign in">♙</button>
+      <button class="cart-btn" id="cartBtn" title="Cart">Cart <b id="cartCount">0</b></button>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#shop" data-filter="men">Men</a>
+    <a href="#shop" data-filter="women">Women</a>
+    <a href="#shop" data-filter="kids">Kids</a>
+    <a href="#shop" data-filter="accessories">Accessories</a>
+    <a href="#shop">All Products</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="eyebrow">WELCOME TO</p>
+        <h1>SM <span>ONLINE STORE</span></h1>
+        <p>Simple style. Great prices. Shop fashion, jerseys, bags and accessories in one place.</p>
+        <a class="primary" href="#shop">Shop Now</a>
+      </div>
+      <div class="hero-card">
+        <div class="hero-mark">SM</div>
+        <p>NEW COLLECTION</p>
+      </div>
+    </section>
+
+    <section class="categories" aria-label="Categories">
+      <button data-filter="men">MEN</button>
+      <button data-filter="women">WOMEN</button>
+      <button data-filter="kids">KIDS</button>
+      <button data-filter="accessories">ACCESSORIES</button>
+    </section>
+
+    <section class="shop" id="shop">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">SHOP</p>
+          <h2>Featured Products</h2>
+        </div>
+        <select id="filterSelect" aria-label="Filter products">
+          <option value="all">All products</option>
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+          <option value="kids">Kids</option>
+          <option value="accessories">Accessories</option>
+        </select>
+      </div>
+      <div class="products" id="productGrid"></div>
+    </section>
+
+    <section class="info-grid">
+      <div><strong>Fast ordering</strong><span>Add products to your cart and place an order.</span></div>
+      <div><strong>WhatsApp support</strong><span>Contact the store directly through WhatsApp.</span></div>
+      <div><strong>Help</strong><span>Need assistance? Use the Help button anytime.</span></div>
+    </section>
+  
+    <section class="contact-24-7" id="contact">
+      <div>
+        <p class="eyebrow">CONTACT</p>
+        <h2>We're available 24/7.</h2>
+        <p>Call or WhatsApp us anytime on <strong>0746 624 725</strong>.</p>
+      </div>
+      <div class="contact-buttons">
+        <a class="btn btn-dark" href="tel:+254746624725">Call 0746 624 725</a>
+        <a class="btn btn-outline" href="https://wa.me/254746624725?text=Hello%20Online%20SM%20Store%20%F0%9F%91%8B" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div><strong>SM ONLINE STORE</strong><p>Fashion • Jerseys • Bags • Accessories</p></div>
+    <button class="whatsapp" id="whatsappBtn">WhatsApp Us</button>
+  </footer>
+
+  <!-- Account modal -->
+  <div class="modal" id="accountModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="close" data-close="accountModal">×</button>
+      <h2 id="accountTitle">Sign in</h2>
+      <p class="muted">Your account is saved only on this device.</p>
+      <form id="accountForm">
+        <label>Name<input id="accountName" required placeholder="Your name"></label>
+        <label>Email<input id="accountEmail" type="email" required placeholder="you@example.com"></label>
+        <button class="primary full" type="submit">Continue</button>
+      </form>
+      <button class="text-btn" id="signOutBtn" hidden>Sign out</button>
+    </div>
+  </div>
+
+  <!-- Cart modal -->
+  <div class="modal" id="cartModal" aria-hidden="true">
+    <div class="modal-box wide">
+      <button class="close" data-close="cartModal">×</button>
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">KSh 0</strong></div>
+      <button class="primary full" id="checkoutBtn">Place Order</button>
+    </div>
+  </div>
+
+  <!-- Checkout modal -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="close" data-close="checkoutModal">×</button>
+      <h2>Place Order</h2>
+      <p class="muted">Enter your delivery details. The order will be prepared as a WhatsApp message.</p>
+      <form id="checkoutForm">
+        <label>Full name<input id="customerName" required></label>
+        <label>Phone number<input id="customerPhone" required placeholder="07xx xxx xxx"></label>
+        <label>Delivery location<textarea id="customerLocation" required placeholder="Estate, town, landmark..."></textarea></label>
+        <label>Extra note (optional)<textarea id="customerNote" placeholder="Size, colour or other request"></textarea></label>
+        <button class="primary full" type="submit">Send Order on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Help modal -->
+  <div class="modal" id="helpModal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="close" data-close="helpModal">×</button>
+      <h2>Help</h2>
+      <div class="help-list">
+        <p><b>How do I buy?</b><br>Add an item to your cart, open Cart, then tap Place Order.</p>
+        <p><b>How do I contact you?</b><br>Tap WhatsApp Us. Replace the WhatsApp number in <code>app.js</code> with your store number.</p>
+        <p><b>How does sign in work?</b><br>It saves your name and email locally on this browser. It is a front-end demo, not a real database account system.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
